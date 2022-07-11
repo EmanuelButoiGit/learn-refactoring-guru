@@ -1,0 +1,23 @@
+
+Code Smells 🦨
+
+🐘🐘 Bloaters 🐘🐘
+A lot of code in a method/class -> accumulates over time
+
+Long Method > 10 lines
+💊 Treatment 
+-> if you feel the need to comment on something inside a method, 
+you should take this code and put it in a new method.
+
+🙅🏻🙅🏻 Object-Orientation Abusers 🙅🏻🙅🏻
+All these smells are incomplete or incorrect application of object-oriented programming principles.
+
+Switch
+💊 Treatment 
+As a rule of thumb, when you see switch you should think of polymorphism.
+
+Alternative Classes with Different Interfaces
+Two classes perform identical functions but have different method names.
+💊 Treatment 
+If only part of the functionality of the classes is duplicated, try using Extract Superclass.
+In this case, the existing classes will become subclasses.
