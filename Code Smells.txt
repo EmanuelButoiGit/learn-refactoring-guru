@@ -39,3 +39,27 @@ REASON overzealous application of Divergent Change.
 
 🗑️🗑️ Dispensables 🗑️🗑️
 A dispensable is something pointless and unneeded whose absence would make the code cleaner, more efficient and easier to understand.
+
+Comments
+A method is filled with explanatory comments.
+
+Duplicate Code
+
+😴 Lazy Class
+Understanding and maintaining classes always costs time and money. So if a class doesn’t do enough to earn your attention, it should be deleted.
+💊 Treatment 
+Inline Class (combine classes), Collapse Hierarchy
+
+
+🐫🐫 Couplers 🐫🐫
+All the smells in this group contribute to excessive coupling between classes or show what happens if coupling is replaced by excessive delegation.
+
+Inappropriate Intimacy
+One class uses the internal fields and methods of another class.
+💊 Treatment 
+The simplest solution is to use Move Method and Move Field to move parts of one class to the class in which those parts are used. But this works only if the first class truly doesn’t need these parts.
+
+Middle Man
+If a class performs only one action, delegating work to another class, why does it exist at all?
+💊 Treatment 
+If most of a method’s classes delegate to another class, Remove Middle Man is in order.
