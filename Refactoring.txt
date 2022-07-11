@@ -1,0 +1,165 @@
+
+🔧 Refactoring 🔧
+
+
+🟣 Extract Method
+
+☢️ Problem
+You have a code fragment that can be grouped together.
+
+void printOwing() {
+  printBanner();
+
+  // Print details.
+  System.out.println("name: " + name);
+  System.out.println("amount: " + getOutstanding());
+}
+
+🟢 Solution
+Move this code to a separate new method (or function) and replace the old code with a call to the method.
+
+void printOwing() {
+    printBanner();
+    printDetails(getOutstanding());
+  }
+  
+  void printDetails(double outstanding) {
+    System.out.println("name: " + name);
+    System.out.println("amount: " + outstanding);
+  }
+
+
+🟣 Inline Method
+
+☢️ Problem
+When a method body is more obvious than the method itself, use this technique.
+
+class PizzaDelivery {
+  // ...
+  int getRating() {
+    return moreThanFiveLateDeliveries() ? 2 : 1;
+  }
+  boolean moreThanFiveLateDeliveries() {
+    return numberOfLateDeliveries > 5;
+  }
+}
+
+🟢 Solution
+Replace calls to the method with the method’s content and delete the method itself.
+
+class PizzaDelivery {
+  // ...
+  int getRating() {
+    return numberOfLateDeliveries > 5 ? 2 : 1;
+  }
+}
+
+
+🟣 Inline Temp
+
+☢️ Problem
+You have a temporary variable that’s assigned the result of a simple expression and nothing more.
+
+boolean hasDiscount(Order order) {
+  double basePrice = order.basePrice();
+  return basePrice > 1000;
+}
+
+🟢 Solution
+Replace the references to the variable with the expression itself.
+
+boolean hasDiscount(Order order) {
+  return order.basePrice() > 1000;
+}
+
+
+🟣 Substitute Algorithm
+
+☢️ Problem
+So you want to replace an existing algorithm with a new one?
+
+String foundPerson(String[] people){
+  for (int i = 0; i < people.length; i++) {
+    if (people[i].equals("Don")){
+      return "Don";
+    }
+    if (people[i].equals("John")){
+      return "John";
+    }
+    if (people[i].equals("Kent")){
+      return "Kent";
+    }
+  }
+  return "";
+}
+
+🟢 Solution
+Replace the body of the method that implements the algorithm with a new algorithm.
+
+String foundPerson(String[] people){
+  List candidates =
+    Arrays.asList(new String[] {"Don", "John", "Kent"});
+  for (int i=0; i < people.length; i++) {
+    if (candidates.contains(people[i])) {
+      return people[i];
+    }
+  }
+  return "";
+}
+
+
+🟣 Introduce Foreign Method
+
+☢️ Problem
+A utility class doesn’t contain the method that you need and you can’t add the method to the class.
+
+class Report {
+  // ...
+  void sendReport() {
+    Date nextDay = new Date(previousEnd.getYear(),
+      previousEnd.getMonth(), previousEnd.getDate() + 1);
+    // ...
+  }
+}
+
+🟢 Solution
+Add the method to a client class and pass an object of the utility class to it as an argument.
+
+class Report {
+  // ...
+  void sendReport() {
+    Date newStart = nextDay(previousEnd);
+    // ...
+  }
+  private static Date nextDay(Date arg) {
+    return new Date(arg.getYear(), arg.getMonth(), arg.getDate() + 1);
+  }
+}
+
+🟣 Introduce Foreign Method
+
+☢️ Problem
+You use direct access to private fields inside a class.
+
+class Range {
+  private int low, high;
+  boolean includes(int arg) {
+    return arg >= low && arg <= high;
+  }
+}
+
+🟢 Solution
+Create a getter and setter for the field, and use only them for accessing the field.
+
+class Range {
+  private int low, high;
+  boolean includes(int arg) {
+    return arg >= getLow() && arg <= getHigh();
+  }
+  int getLow() {
+    return low;
+  }
+  int getHigh() {
+    return high;
+  }
+}
