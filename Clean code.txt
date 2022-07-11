@@ -1,6 +1,6 @@
 Clean code
 
-🚿 Clean code doesn’t contain duplication.
+🚿 Clean code doesn`t contain duplication.
 
 When to refactor?
 
