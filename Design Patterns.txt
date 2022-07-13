@@ -1,0 +1,35 @@
+
+😋 an algorithm 😋
+is a cooking recipe: both have clear steps to achieve a goal. 
+
+
+🏠 A pattern 🏠
+is more like a blueprint: you can see what the result and its features are, but the exact order of implementation is up to you.
+
+🧐 When a solution gets repeated over and over in various projects, 
+someone eventually puts a name to it and describes the solution in detail. 
+That’s basically how a pattern gets discovered.
+
+
+🟢 Classification of patterns
+
+The most basic and low-level patterns are often called idioms 🐵🙈🙉. 
+They usually apply only to a single programming language.
+
+The most universal and high-level patterns are architectural patterns 😎😎😎. 
+Developers can implement these patterns in virtually any language. 
+Unlike other patterns, they can be used to design the architecture of an entire application.
+
+
+3️⃣ main groups of patterns:
+
+⚙️ Creational patterns provide object creation mechanisms that 
+    -> increase flexibility and reuse of existing code.
+
+🏠 Structural patterns explain 
+    -> how to assemble objects and classes into larger structures, 
+    while keeping these structures flexible and efficient.
+
+✉️ Behavioral patterns 
+    -> take care of effective communication
+    and the assignment of responsibilities between objects.
